@@ -535,6 +535,14 @@
   .reel__sound .reel__on { display: none; }
   .reel__sound.is-on .reel__on { display: block; }
   .reel__sound.is-on .reel__off { display: none; }
+
+  /* Rating row (stars + review count) */
+  .dm-rating { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; margin: 0 0 12px; font-size: 13px; color: rgba(10,10,10,.62); }
+  .dm-stars { position: relative; display: inline-block; font-family: Arial, 'Segoe UI Symbol', sans-serif; font-size: 16px; letter-spacing: 2px; line-height: 1; color: rgba(10,10,10,.18); white-space: nowrap; }
+  .dm-stars__fg { position: absolute; left: 0; top: 0; overflow: hidden; white-space: nowrap; color: var(--dm-black); }
+  .pp .dm-rating { margin: 0 0 18px; font-size: 16px; }
+  .pp .dm-stars { font-size: 21px; }
+  .dm-rating__link { color: inherit; text-decoration: none; }
 </style>
 <script>
 (function () {
@@ -643,18 +651,22 @@
         <span class="ribbon__flourish">Moment for me &#9829;</span>
         <div class="ribbon__track" id="dm-track">
           <div class="ribbon__item">
-            <video src="assets/reel-1.mp4" poster="assets/reel-1.jpg" muted loop playsinline preload="none" data-reel aria-label="Відео 1"></video>
-          </div>
-          <div class="ribbon__item">
-            <video src="assets/reel-2.mp4" poster="assets/reel-2.jpg" muted loop playsinline preload="none" data-reel aria-label="Відео 2"></video>
+            <video src="assets/reel-5.mp4" poster="assets/reel-5.jpg" muted loop playsinline preload="none" data-reel aria-label="Відео 1"></video>
             <button type="button" class="reel__sound" data-reel-sound aria-label="Увімкнути звук" aria-pressed="false"><svg class="reel__off" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8v4h3l4 3V5L6 8H3z"/><path d="M14 8l4 4M18 8l-4 4"/></svg><svg class="reel__on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8v4h3l4 3V5L6 8H3z"/><path d="M13 7.5a3.5 3.5 0 0 1 0 5M15.5 5a7 7 0 0 1 0 10"/></svg></button>
           </div>
           <div class="ribbon__item">
-            <video src="assets/reel-3.mp4" poster="assets/reel-3.jpg" muted loop playsinline preload="none" data-reel aria-label="Відео 3"></video>
+            <video src="assets/reel-1.mp4" poster="assets/reel-1.jpg" muted loop playsinline preload="none" data-reel aria-label="Відео 2"></video>
+          </div>
+          <div class="ribbon__item">
+            <video src="assets/reel-2.mp4" poster="assets/reel-2.jpg" muted loop playsinline preload="none" data-reel aria-label="Відео 3"></video>
             <button type="button" class="reel__sound" data-reel-sound aria-label="Увімкнути звук" aria-pressed="false"><svg class="reel__off" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8v4h3l4 3V5L6 8H3z"/><path d="M14 8l4 4M18 8l-4 4"/></svg><svg class="reel__on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8v4h3l4 3V5L6 8H3z"/><path d="M13 7.5a3.5 3.5 0 0 1 0 5M15.5 5a7 7 0 0 1 0 10"/></svg></button>
           </div>
           <div class="ribbon__item">
-            <video src="assets/reel-4.mp4" poster="assets/reel-4.jpg" muted loop playsinline preload="none" data-reel aria-label="Відео 4"></video>
+            <video src="assets/reel-3.mp4" poster="assets/reel-3.jpg" muted loop playsinline preload="none" data-reel aria-label="Відео 4"></video>
+            <button type="button" class="reel__sound" data-reel-sound aria-label="Увімкнути звук" aria-pressed="false"><svg class="reel__off" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8v4h3l4 3V5L6 8H3z"/><path d="M14 8l4 4M18 8l-4 4"/></svg><svg class="reel__on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8v4h3l4 3V5L6 8H3z"/><path d="M13 7.5a3.5 3.5 0 0 1 0 5M15.5 5a7 7 0 0 1 0 10"/></svg></button>
+          </div>
+          <div class="ribbon__item">
+            <video src="assets/reel-4.mp4" poster="assets/reel-4.jpg" muted loop playsinline preload="none" data-reel aria-label="Відео 5"></video>
             <button type="button" class="reel__sound" data-reel-sound aria-label="Увімкнути звук" aria-pressed="false"><svg class="reel__off" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8v4h3l4 3V5L6 8H3z"/><path d="M14 8l4 4M18 8l-4 4"/></svg><svg class="reel__on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8v4h3l4 3V5L6 8H3z"/><path d="M13 7.5a3.5 3.5 0 0 1 0 5M15.5 5a7 7 0 0 1 0 10"/></svg></button>
           </div>
         </div>
@@ -670,6 +682,7 @@
           <button class="dot" aria-label="Показати відео 2" data-index="1"></button>
           <button class="dot" aria-label="Показати відео 3" data-index="2"></button>
           <button class="dot" aria-label="Показати відео 4" data-index="3"></button>
+          <button class="dot" aria-label="Показати відео 5" data-index="4"></button>
         </div>
       </div>
 
@@ -759,6 +772,7 @@
         </a>
         <div class="shop__card-body">
           <h3>Шампунь</h3>
+          <div class="dm-rating" data-rating-for="shampoo"></div>
           <p>Молочний шампунь для ніжного очищення й шовковистого блиску.</p>
           <button type="button" class="cta-solid shop__card-cta" data-add="shampoo">
             В кошик
@@ -772,6 +786,7 @@
         </a>
         <div class="shop__card-body">
           <h3>Ліпідна маска</h3>
+          <div class="dm-rating" data-rating-for="mask"></div>
           <p>Інтенсивне відновлення і шовковистість. Step 2 ритуалу «Moment for me».</p>
           <button type="button" class="cta-solid shop__card-cta" data-add="mask">
             В кошик
@@ -785,6 +800,7 @@
         </a>
         <div class="shop__card-body">
           <h3>Кондиціонер-дифризер</h3>
+          <div class="dm-rating" data-rating-for="conditioner"></div>
           <p>Зволожує і миттєво закриває кутикулу. Step 3 ритуалу «Moment for me».</p>
           <button type="button" class="cta-solid shop__card-cta" data-add="conditioner">
             В кошик
@@ -798,6 +814,7 @@
         </a>
         <div class="shop__card-body">
           <h3>Молочко для волосся</h3>
+          <div class="dm-rating" data-rating-for="milk"></div>
           <p>Живлення, сяйво і розгладжена текстура. Step 4 ритуалу «Moment for me».</p>
           <button type="button" class="cta-solid shop__card-cta" data-add="milk">
             В кошик
@@ -811,6 +828,7 @@
         </a>
         <div class="shop__card-body">
           <h3>Термозахист</h3>
+          <div class="dm-rating" data-rating-for="spray"></div>
           <p>Бар’єр від нагріву та щоденного стресу волосся. Step 5 ритуалу «Moment for me».</p>
           <button type="button" class="cta-solid shop__card-cta" data-add="spray">
             В кошик
@@ -824,6 +842,7 @@
         </div>
         <div class="shop__card-body">
           <h3>Moment for me</h3>
+          <div class="dm-rating" data-rating-for="set"></div>
           <p>Повний ритуал догляду з п’яти кроків: шампунь, маска, дифризер, молочко і термозахист.</p>
           <button type="button" class="cta-solid shop__card-cta" data-add="set">
             В кошик
@@ -1090,6 +1109,7 @@
           <span class="pp-label">Milk-Infused Shampoo</span>
           <h1 class="pp-title">Moment for me</h1>
           <p class="pp-sub">Молочний шампунь</p>
+          <div class="dm-rating" data-rating-for="shampoo"></div>
           <p class="pp-price">₴ 000.00</p>
           <hr class="pp-rule">
           <p class="pp-vol">Об’єм: <b>400 мл</b></p>
@@ -1155,6 +1175,7 @@
           <span class="pp-label">Hair Mask</span>
           <h1 class="pp-title">Moment for me</h1>
           <p class="pp-sub">Ліпідна маска для волосся</p>
+          <div class="dm-rating" data-rating-for="mask"></div>
           <p class="pp-price">₴ 000.00</p>
           <hr class="pp-rule">
           <p class="pp-vol">Об’єм: <b>500 мл</b></p>
@@ -1220,6 +1241,7 @@
           <span class="pp-label">Defrizzer</span>
           <h1 class="pp-title">Moment for me</h1>
           <p class="pp-sub">Кондиціонер для волосся</p>
+          <div class="dm-rating" data-rating-for="conditioner"></div>
           <p class="pp-price">₴ 000.00</p>
           <hr class="pp-rule">
           <p class="pp-vol">Об’єм: <b>400 мл</b></p>
@@ -1285,6 +1307,7 @@
           <span class="pp-label">Milk-Fluid</span>
           <h1 class="pp-title">Moment for me</h1>
           <p class="pp-sub">Молочко для блиску</p>
+          <div class="dm-rating" data-rating-for="milk"></div>
           <p class="pp-price">₴ 000.00</p>
           <hr class="pp-rule">
           <p class="pp-vol">Об’єм: <b>200 мл</b></p>
@@ -1350,6 +1373,7 @@
           <span class="pp-label">Protecting</span>
           <h1 class="pp-title">Moment for me</h1>
           <p class="pp-sub">Спрей-термозахист двофазний</p>
+          <div class="dm-rating" data-rating-for="spray"></div>
           <p class="pp-price">₴ 000.00</p>
           <hr class="pp-rule">
           <p class="pp-vol">Об’єм: <b>250 мл</b></p>
@@ -2175,6 +2199,39 @@
       if (on) { v.muted = false; btn.classList.add('is-on'); btn.setAttribute('aria-pressed', 'true'); btn.setAttribute('aria-label', 'Вимкнути звук'); var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
     });
   } catch (e) { console.error('D\'Amore reels error:', e); }
+})();
+</script>
+<script>
+/* Ratings shown like "★★★★☆ 62 відгуки" under product names (cards + product pages).
+   Put REAL data here, e.g.  shampoo: { rating: 4.8, count: 12 }.
+   Products without data show "Поки немає відгуків". */
+(function () {
+  try {
+    var RATINGS = {
+      // shampoo: { rating: 0, count: 0 },
+      // mask: { rating: 0, count: 0 },
+      // conditioner: { rating: 0, count: 0 },
+      // milk: { rating: 0, count: 0 },
+      // spray: { rating: 0, count: 0 },
+      // set: { rating: 0, count: 0 }
+    };
+    function plural(n) {
+      var m10 = n % 10, m100 = n % 100;
+      if (m10 === 1 && m100 !== 11) return 'відгук';
+      if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return 'відгуки';
+      return 'відгуків';
+    }
+    Array.prototype.slice.call(document.querySelectorAll('[data-rating-for]')).forEach(function (el) {
+      var d = RATINGS[el.getAttribute('data-rating-for')];
+      var five = '\u2605\u2605\u2605\u2605\u2605';
+      if (d && d.count > 0) {
+        var pct = Math.max(0, Math.min(100, d.rating / 5 * 100));
+        el.innerHTML = '<span class="dm-stars" role="img" aria-label="Рейтинг ' + d.rating + ' з 5">' + five + '<span class="dm-stars__fg" style="width:' + pct + '%">' + five + '</span></span><span>' + d.count + ' ' + plural(d.count) + '</span>';
+      } else {
+        el.innerHTML = '<span class="dm-stars" aria-hidden="true">' + five + '</span><span>Поки немає відгуків</span>';
+      }
+    });
+  } catch (e) { console.error('D\'Amore ratings error:', e); }
 })();
 </script>
 </body>
