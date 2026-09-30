@@ -511,9 +511,36 @@
   .dm-popup__close:hover { background: var(--dm-accent); }
   @keyframes dmpop { from { opacity: 0; transform: translateY(18px) scale(.97); } to { opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce) { .dm-popup__box { animation: none; } }
+
+  /* Intro splash (short, shown once per browser session) */
+  html:not(.js) #dm-intro, html:not(.dm-intro-on) #dm-intro { display: none; }
+  #dm-intro { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; background: var(--dm-black); transition: transform .7s cubic-bezier(.76,0,.24,1); }
+  #dm-intro.is-open { transform: translateX(-100%); pointer-events: none; }
+  .dm-intro__mark { display: flex; flex-direction: column; align-items: center; gap: 18px; opacity: 0; transition: opacity .5s ease .1s; }
+  .dm-intro__mark.is-show { opacity: 1; }
+  .dm-intro__logo { display: inline-flex; align-items: center; gap: .04em; font-family: 'Quicksand', 'Jost', sans-serif; font-weight: 700; font-size: 38px; letter-spacing: .01em; text-transform: uppercase; color: var(--dm-white); }
+  .dm-intro__logo svg { width: .62em; height: .55em; color: var(--dm-accent); }
+  .dm-intro__bar { width: 140px; height: 2px; background: rgba(255,255,255,.16); overflow: hidden; }
+  .dm-intro__fill { width: 0; height: 100%; background: var(--dm-accent); transition: width 1.15s cubic-bezier(.4,0,.2,1) .15s; }
+  .dm-intro__mark.is-show .dm-intro__fill { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { #dm-intro { display: none !important; } }
 </style>
+<script>
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  try { if (!sessionStorage.getItem('dm-intro-seen') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('dm-intro-on'); } catch (e) {}
+})();
+</script>
 </head>
 <body>
+  <div id="dm-intro" aria-hidden="true">
+    <div class="dm-intro__mark" id="dm-intro-mark">
+      <span class="dm-intro__logo">D'AM<svg viewBox="0 0 32 28" fill="currentColor"><path d="M16 26C7 19 2 14 2 8.5 2 4 5.5 1 9.5 1c2.7 0 5 1.4 6.5 3.6C17.5 2.4 19.8 1 22.5 1 26.5 1 30 4 30 8.5 30 14 25 19 16 26z"/></svg>RE</span>
+      <div class="dm-intro__bar"><div class="dm-intro__fill"></div></div>
+    </div>
+  </div>
+
 
   <header class="site-header" id="site-header">
     <div class="site-header__row">
@@ -2045,6 +2072,28 @@
     renderAccount();
     refresh();
   } catch (e) { console.error('D\'Amore shop script error:', e); }
+})();
+</script>
+<script>
+/* Intro splash: never blocks loading. Minimum ~1.3s for the animation, closes as soon as the page has loaded, hard cap 3.5s. */
+(function () {
+  var intro = document.getElementById('dm-intro');
+  if (!intro || !document.documentElement.classList.contains('dm-intro-on')) return;
+  var mark = document.getElementById('dm-intro-mark');
+  var closed = false, minDone = false, loaded = document.readyState === 'complete';
+  document.body.classList.add('dm-lock');
+  requestAnimationFrame(function () { requestAnimationFrame(function () { mark.classList.add('is-show'); }); });
+  function close() {
+    if (closed) return; closed = true;
+    try { sessionStorage.setItem('dm-intro-seen', '1'); } catch (e) {}
+    intro.classList.add('is-open');
+    document.body.classList.remove('dm-lock');
+    setTimeout(function () { intro.style.display = 'none'; document.documentElement.classList.remove('dm-intro-on'); }, 800);
+  }
+  function tryClose() { if (minDone && loaded) close(); }
+  setTimeout(function () { minDone = true; tryClose(); }, 1300);
+  window.addEventListener('load', function () { loaded = true; tryClose(); });
+  setTimeout(close, 3500);
 })();
 </script>
 </body>
