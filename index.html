@@ -1509,7 +1509,10 @@
       dot.addEventListener('click', function () {
         var i = parseInt(dot.getAttribute('data-index'), 10);
         var el = slides[i];
-        if (el) el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        if (!el) return;
+        setActive(i);
+        var left = el.offsetLeft - (track.clientWidth - el.offsetWidth) / 2;
+        track.scrollTo({ left: Math.max(0, Math.min(left, track.scrollWidth - track.clientWidth)), behavior: 'smooth' });
       });
     });
 
@@ -1526,6 +1529,10 @@
           var d = Math.abs((r.left + r.width / 2) - centerX);
           if (d < closestDist) { closestDist = d; closest = i; }
         });
+        // the first/last slide can never reach the centre, so pin them at the scroll edges
+        var maxScroll = track.scrollWidth - track.clientWidth;
+        if (track.scrollLeft <= 2) closest = 0;
+        else if (track.scrollLeft >= maxScroll - 2) closest = slides.length - 1;
         setActive(closest);
         ticking = false;
       });
