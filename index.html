@@ -428,6 +428,89 @@
     .ribbon { flex: 1 1 100%; }
     .catalog__nav { display: none; }
   }
+
+  /* Cart drawer, account page, discount popup */
+  .is-account-page .site-header { background: var(--dm-black); border-bottom: 1px solid rgba(255,255,255,.08); }
+  .site-header__icon { position: relative; background: none; border: 0; padding: 0; cursor: pointer; }
+  .dm-badge { position: absolute; top: -7px; right: -9px; min-width: 16px; height: 16px; padding: 0 4px; background: var(--dm-accent); color: var(--dm-white); font-size: 10px; font-weight: 600; line-height: 16px; text-align: center; }
+  .dm-badge[hidden] { display: none; }
+  @media (max-width: 860px) {
+    .site-header__icons { display: flex; gap: 16px; }
+    .site-header__icon--search { display: none; }
+    .site-header__right { gap: 18px; }
+  }
+  .dm-lock { overflow: hidden; }
+  .dm-drawer { position: fixed; inset: 0; z-index: 80; }
+  .dm-drawer[hidden] { display: none; }
+  .dm-drawer__overlay { position: absolute; inset: 0; background: rgba(10,10,10,.55); }
+  .dm-drawer__panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(440px, 100%); display: flex; flex-direction: column; background: var(--dm-white); color: var(--dm-black); box-shadow: -14px 0 0 var(--dm-accent); }
+  .dm-drawer__head { display: flex; align-items: center; justify-content: space-between; padding: 22px 24px; border-bottom: 1px solid rgba(10,10,10,.14); }
+  .dm-drawer__title { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 500; font-size: 30px; margin: 0; }
+  .dm-x { width: 40px; height: 40px; border: 0; background: none; font-size: 30px; font-weight: 300; line-height: 1; color: var(--dm-black); cursor: pointer; }
+  .dm-x:hover { color: var(--dm-accent); }
+  .dm-drawer__body { flex: 1 1 auto; overflow-y: auto; padding: 8px 24px; }
+  .dm-drawer__foot { padding: 20px 24px 26px; border-top: 1px solid rgba(10,10,10,.14); }
+  .dm-empty { padding: 48px 0; text-align: center; color: rgba(10,10,10,.6); font-size: 15px; line-height: 1.7; }
+  .dm-empty a { color: var(--dm-accent); text-decoration: underline; }
+  .dm-line { display: grid; grid-template-columns: 76px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(10,10,10,.1); }
+  .dm-line img { width: 76px; height: 95px; object-fit: cover; box-shadow: 5px 5px 0 var(--dm-accent); }
+  .dm-line__name { font-size: 15px; font-weight: 600; margin: 0 0 2px; }
+  .dm-line__sub { font-size: 13px; color: rgba(10,10,10,.55); margin: 0 0 10px; }
+  .dm-line__row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .dm-step { display: inline-flex; align-items: center; border: 1px solid var(--dm-black); }
+  .dm-step button { width: 32px; height: 32px; border: 0; background: none; font-family: inherit; font-size: 18px; cursor: pointer; color: var(--dm-black); }
+  .dm-step button:hover { background: var(--dm-black); color: var(--dm-white); }
+  .dm-step output { min-width: 28px; text-align: center; font-size: 14px; font-weight: 600; }
+  .dm-line__price { font-size: 15px; font-weight: 600; }
+  .dm-link { border: 0; background: none; padding: 0; margin-top: 8px; font-family: inherit; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: rgba(10,10,10,.5); text-decoration: underline; cursor: pointer; }
+  .dm-link:hover { color: var(--dm-accent); }
+  .dm-promo { display: flex; gap: 8px; margin-bottom: 16px; }
+  .dm-promo input { flex: 1 1 0; min-width: 0; height: 44px; padding: 0 14px; border: 1px solid rgba(10,10,10,.3); font-family: inherit; font-size: 14px; text-transform: uppercase; }
+  .dm-promo button { height: 44px; padding: 0 18px; border: 1px solid var(--dm-black); background: none; font-family: inherit; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; }
+  .dm-promo button:hover { background: var(--dm-black); color: var(--dm-white); }
+  .dm-msg { min-height: 18px; margin: -8px 0 12px; font-size: 13px; color: var(--dm-accent); }
+  .dm-sum { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; color: rgba(10,10,10,.7); }
+  .dm-sum--total { margin: 12px 0 18px; font-size: 18px; font-weight: 600; color: var(--dm-black); }
+  .dm-btn { display: block; width: 100%; height: 54px; border: 0; background: var(--dm-black); color: var(--dm-white); font-family: inherit; font-size: 13px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; cursor: pointer; transition: background-color .2s ease; }
+  .dm-btn:hover { background: var(--dm-accent); }
+  .dm-btn--ghost { background: none; color: var(--dm-black); border: 1px solid var(--dm-black); margin-top: 10px; }
+  .dm-btn--ghost:hover { background: var(--dm-black); color: var(--dm-white); }
+  .dm-form { display: flex; flex-direction: column; gap: 14px; padding: 18px 0; }
+  .dm-field { display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: rgba(10,10,10,.6); }
+  .dm-field input, .dm-field textarea { padding: 13px 14px; border: 1px solid rgba(10,10,10,.3); background: var(--dm-white); font-family: inherit; font-size: 15px; letter-spacing: 0; text-transform: none; color: var(--dm-black); border-radius: 0; }
+  .dm-field textarea { min-height: 76px; resize: vertical; }
+  .dm-field input:focus, .dm-field textarea:focus { outline: 2px solid var(--dm-accent); outline-offset: 1px; }
+  .dm-done { padding: 40px 0; text-align: center; }
+  .dm-done h3 { margin: 0 0 12px; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 500; font-size: 32px; }
+  .dm-done p { margin: 0 0 8px; font-size: 15px; line-height: 1.7; color: rgba(10,10,10,.7); }
+
+  .acct { min-height: 80vh; }
+  .acct__box { max-width: 520px; margin: 0 auto; }
+  .acct__title { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 500; font-size: clamp(38px,5vw,60px); line-height: 1.05; margin-bottom: 24px; }
+  .acct__tabs { display: flex; border-bottom: 1px solid rgba(10,10,10,.14); margin-bottom: 8px; }
+  .acct__tab { flex: 1 1 0; padding: 16px 0; border: 0; border-bottom: 3px solid transparent; background: none; font-family: inherit; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(10,10,10,.5); cursor: pointer; }
+  .acct__tab.is-active { color: var(--dm-black); border-bottom-color: var(--dm-accent); }
+  .acct__note { margin-top: 18px; font-size: 12px; line-height: 1.6; color: rgba(10,10,10,.5); }
+  .acct__wide { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.3fr); gap: clamp(28px,5vw,72px); align-items: start; }
+  .acct h2 { margin: 0 0 8px; font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--dm-accent); }
+  .acct__badge { display: inline-block; margin: 6px 0 18px; padding: 8px 14px; background: var(--dm-accent); color: var(--dm-white); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+  .acct__order { padding: 18px 0; border-bottom: 1px solid rgba(10,10,10,.12); }
+  .acct__order:first-of-type { border-top: 1px solid rgba(10,10,10,.12); }
+  .acct__order-head { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 6px; font-size: 14px; font-weight: 600; }
+  .acct__order p { margin: 0; font-size: 14px; line-height: 1.6; color: rgba(10,10,10,.65); }
+  @media (max-width: 860px) { .acct__wide { grid-template-columns: minmax(0,1fr); } }
+
+  .dm-popup { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 16px; }
+  .dm-popup[hidden] { display: none; }
+  .dm-popup__overlay { position: absolute; inset: 0; background: rgba(10,10,10,.68); }
+  .dm-popup__box { position: relative; display: flex; flex-direction: column; align-items: center; gap: 18px; max-height: 100%; animation: dmpop .45s ease; }
+  .dm-popup__box img { display: block; width: auto; height: min(68vh, 560px); max-width: 100%; object-fit: contain; }
+  .dm-popup__cta { align-self: center; padding: 15px 30px; border: 0; background: var(--dm-accent); color: var(--dm-white); font-family: inherit; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; cursor: pointer; transition: background-color .2s ease; }
+  .dm-popup__cta:hover { background: var(--dm-white); color: var(--dm-black); }
+  .dm-popup__close { position: absolute; top: 0; right: -6px; width: 42px; height: 42px; border: 0; background: var(--dm-black); color: var(--dm-white); font-size: 26px; line-height: 1; cursor: pointer; z-index: 2; }
+  .dm-popup__close:hover { background: var(--dm-accent); }
+  @keyframes dmpop { from { opacity: 0; transform: translateY(18px) scale(.97); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .dm-popup__box { animation: none; } }
 </style>
 </head>
 <body>
@@ -454,15 +537,15 @@
       </nav>
       <div class="site-header__right">
         <div class="site-header__icons">
-          <a href="#" class="site-header__icon" aria-label="Пошук">
+          <a href="#" class="site-header__icon site-header__icon--search" aria-label="Пошук">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="6.5"/><path d="M18 18l-4.3-4.3"/></svg>
           </a>
-          <a href="#" class="site-header__icon" aria-label="Особистий кабінет">
+          <a href="#/account" class="site-header__icon" aria-label="Особистий кабінет">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="6.5" r="3.5"/><path d="M3 18c1.2-4 4-6 7-6s5.8 2 7 6"/></svg>
           </a>
-          <a href="#shop" class="site-header__icon" aria-label="Кошик">
+          <button type="button" id="dm-cart-open" class="site-header__icon" aria-label="Кошик">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h10l1 11H4L5 7z"/><path d="M7.5 7V5.5a2.5 2.5 0 0 1 5 0V7"/></svg>
-          </a>
+          <span class="dm-badge" id="dm-cart-badge" hidden>0</span></button>
         </div>
         <button class="site-header__burger" id="site-burger" aria-label="Меню" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -623,7 +706,7 @@
         <div class="shop__card-body">
           <h3>Шампунь</h3>
           <p>Молочний шампунь для ніжного очищення й шовковистого блиску.</p>
-          <button type="button" class="cta-solid shop__card-cta">
+          <button type="button" class="cta-solid shop__card-cta" data-add="shampoo">
             В кошик
             <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -636,7 +719,7 @@
         <div class="shop__card-body">
           <h3>Ліпідна маска</h3>
           <p>Інтенсивне відновлення і шовковистість. Step 2 ритуалу «Moment for me».</p>
-          <button type="button" class="cta-solid shop__card-cta">
+          <button type="button" class="cta-solid shop__card-cta" data-add="mask">
             В кошик
             <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -649,7 +732,7 @@
         <div class="shop__card-body">
           <h3>Кондиціонер-дифризер</h3>
           <p>Зволожує і миттєво закриває кутикулу. Step 3 ритуалу «Moment for me».</p>
-          <button type="button" class="cta-solid shop__card-cta">
+          <button type="button" class="cta-solid shop__card-cta" data-add="conditioner">
             В кошик
             <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -662,7 +745,7 @@
         <div class="shop__card-body">
           <h3>Молочко для волосся</h3>
           <p>Живлення, сяйво і розгладжена текстура. Step 4 ритуалу «Moment for me».</p>
-          <button type="button" class="cta-solid shop__card-cta">
+          <button type="button" class="cta-solid shop__card-cta" data-add="milk">
             В кошик
             <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -675,7 +758,7 @@
         <div class="shop__card-body">
           <h3>Термозахист</h3>
           <p>Бар’єр від нагріву та щоденного стресу волосся. Step 5 ритуалу «Moment for me».</p>
-          <button type="button" class="cta-solid shop__card-cta">
+          <button type="button" class="cta-solid shop__card-cta" data-add="spray">
             В кошик
             <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -688,7 +771,7 @@
         <div class="shop__card-body">
           <h3>Moment for me</h3>
           <p>Повний ритуал догляду з п’яти кроків: шампунь, маска, дифризер, молочко і термозахист.</p>
-          <button type="button" class="cta-solid shop__card-cta">
+          <button type="button" class="cta-solid shop__card-cta" data-add="set">
             В кошик
             <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -963,7 +1046,7 @@
               <output data-pp-qty aria-live="polite">1</output>
               <button type="button" data-pp-step="1" aria-label="Більше">+</button>
             </div>
-            <button type="button" class="pp-cart">В кошик</button>
+            <button type="button" class="pp-cart" data-add="shampoo">В кошик</button>
           </div>
 
           <details class="pp-acc">
@@ -1028,7 +1111,7 @@
               <output data-pp-qty aria-live="polite">1</output>
               <button type="button" data-pp-step="1" aria-label="Більше">+</button>
             </div>
-            <button type="button" class="pp-cart">В кошик</button>
+            <button type="button" class="pp-cart" data-add="mask">В кошик</button>
           </div>
 
           <details class="pp-acc">
@@ -1093,7 +1176,7 @@
               <output data-pp-qty aria-live="polite">1</output>
               <button type="button" data-pp-step="1" aria-label="Більше">+</button>
             </div>
-            <button type="button" class="pp-cart">В кошик</button>
+            <button type="button" class="pp-cart" data-add="conditioner">В кошик</button>
           </div>
 
           <details class="pp-acc">
@@ -1158,7 +1241,7 @@
               <output data-pp-qty aria-live="polite">1</output>
               <button type="button" data-pp-step="1" aria-label="Більше">+</button>
             </div>
-            <button type="button" class="pp-cart">В кошик</button>
+            <button type="button" class="pp-cart" data-add="milk">В кошик</button>
           </div>
 
           <details class="pp-acc">
@@ -1223,7 +1306,7 @@
               <output data-pp-qty aria-live="polite">1</output>
               <button type="button" data-pp-step="1" aria-label="Більше">+</button>
             </div>
-            <button type="button" class="pp-cart">В кошик</button>
+            <button type="button" class="pp-cart" data-add="spray">В кошик</button>
           </div>
 
           <details class="pp-acc">
@@ -1318,6 +1401,32 @@
         </div>
       </div>
     </section>
+  </div>
+
+
+    <main id="page-account" class="pp acct" hidden>
+    <div class="pp-wrap" id="dm-account-root"></div>
+  </main>
+
+  <aside class="dm-drawer" id="dm-cart" hidden role="dialog" aria-modal="true" aria-labelledby="dm-cart-title">
+    <div class="dm-drawer__overlay" data-cart-close></div>
+    <div class="dm-drawer__panel">
+      <div class="dm-drawer__head">
+        <h2 class="dm-drawer__title" id="dm-cart-title">Кошик</h2>
+        <button type="button" class="dm-x" data-cart-close aria-label="Закрити кошик">&times;</button>
+      </div>
+      <div class="dm-drawer__body" id="dm-cart-body"></div>
+      <div class="dm-drawer__foot" id="dm-cart-foot"></div>
+    </div>
+  </aside>
+
+  <div class="dm-popup" id="dm-popup" hidden role="dialog" aria-modal="true" aria-label="Знижка −10% на наступне замовлення">
+    <div class="dm-popup__overlay" data-popup-close></div>
+    <div class="dm-popup__box">
+      <button type="button" class="dm-popup__close" data-popup-close aria-label="Закрити">&times;</button>
+      <img src="assets/popup-heart.png" alt="Привіт, люба. Тут твоя знижка на наступне замовлення −10%" width="446" height="701">
+      <button type="button" class="dm-popup__cta" id="dm-popup-claim">Забрати знижку −10%</button>
+    </div>
   </div>
 
 
@@ -1568,6 +1677,7 @@
     var home = document.getElementById('page-home');
     if (!home) return;
     var pages = [
+      { key: 'account', hash: '#/account', el: document.getElementById('page-account'), cls: 'is-account-page', title: 'Особистий кабінет' },
       { key: 'mission', hash: '#/mission', el: document.getElementById('page-mission'), cls: 'is-mission-page', title: 'Місія D\'Amore' },
       { key: 'product', hash: '#/product/moment-for-me', el: document.getElementById('page-product'), cls: 'is-product-page', title: 'Moment for me — молочний шампунь' },
       { key: 'product-hair-mask', hash: '#/product/hair-mask', el: document.getElementById('page-product-hair-mask'), cls: 'is-product-page', title: 'Moment for me — маска для волосся' },
@@ -1682,5 +1792,260 @@
 })();
 </script>
 
+<script>
+/* Cart, account and discount popup.
+   Everything is stored in the visitor's browser (localStorage) — this is a front-end mock-up.
+   Prices: fill in PRODUCTS[...].price below. While a price is 0 the site shows the "₴ 000.00" placeholder.
+   Orders: on checkout a "dm:order" event is fired on document (detail = the order) — hook Tilda / an API / email there. */
+(function () {
+  try {
+    var mem = {};
+    var LS = {
+      get: function (k, d) { try { var v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return mem[k] !== undefined ? mem[k] : d; } },
+      set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { mem[k] = v; } }
+    };
+
+    var DISCOUNT_CODE = 'DAMORE10', DISCOUNT_RATE = 0.1;
+    var PRODUCTS = {
+      shampoo:     { name: 'Шампунь',              sub: 'Moment for me · Step 1', img: 'assets/asset-b53602df.jpg', price: 0, href: '#/product/moment-for-me' },
+      mask:        { name: 'Ліпідна маска',        sub: 'Moment for me · Step 2', img: 'assets/asset-5cf19d35.jpg', price: 0, href: '#/product/hair-mask' },
+      conditioner: { name: 'Кондиціонер-дифризер', sub: 'Moment for me · Step 3', img: 'assets/asset-323e92f3.jpg', price: 0, href: '#/product/conditioner' },
+      milk:        { name: 'Молочко для волосся',  sub: 'Moment for me · Step 4', img: 'assets/asset-741c7f11.jpg', price: 0, href: '#/product/hair-milk' },
+      spray:       { name: 'Термозахист',          sub: 'Moment for me · Step 5', img: 'assets/asset-ee8d0401.jpg', price: 0, href: '#/product/thermal-protect' },
+      set:         { name: 'Moment for me',        sub: 'Повний ритуал',          img: 'assets/moment-for-me.jpg',  price: 0, href: '#shop' }
+    };
+
+    function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+    function money(n) { return n > 0 ? '₴ ' + n.toFixed(2) : '₴ 000.00'; }
+
+    /* ---------- cart state ---------- */
+    function getCart() { var c = LS.get('dm-cart', []); return Array.isArray(c) ? c.filter(function (i) { return PRODUCTS[i.id] && i.qty > 0; }) : []; }
+    function saveCart(c) { LS.set('dm-cart', c); refresh(); }
+    function addToCart(id, qty) {
+      var c = getCart(), f = c.filter(function (i) { return i.id === id; })[0];
+      if (f) f.qty = Math.min(99, f.qty + qty); else c.push({ id: id, qty: Math.min(99, qty) });
+      saveCart(c);
+    }
+    function setQty(id, q) {
+      var c = getCart();
+      c.forEach(function (i) { if (i.id === id) i.qty = q; });
+      saveCart(c.filter(function (i) { return i.qty > 0; }));
+    }
+    function totals(c) {
+      var sub = c.reduce(function (s, i) { return s + PRODUCTS[i.id].price * i.qty; }, 0);
+      var on = !!LS.get('dm-discount', false);
+      var disc = on ? sub * DISCOUNT_RATE : 0;
+      return { sub: sub, on: on, disc: disc, total: sub - disc };
+    }
+
+    /* ---------- drawer ---------- */
+    var drawer = document.getElementById('dm-cart');
+    var bodyEl = document.getElementById('dm-cart-body');
+    var footEl = document.getElementById('dm-cart-foot');
+    var titleEl = document.getElementById('dm-cart-title');
+    var view = 'cart', lastOrder = null, promoMsg = '', lastFocus = null;
+
+    function openCart(v) {
+      view = v || 'cart';
+      lastFocus = document.activeElement;
+      drawer.hidden = false;
+      document.body.classList.add('dm-lock');
+      render();
+      var x = drawer.querySelector('.dm-x'); if (x) x.focus();
+    }
+    function closeCart() {
+      drawer.hidden = true;
+      document.body.classList.remove('dm-lock');
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    function render() {
+      var c = getCart(), t = totals(c);
+      if (view === 'done' && lastOrder) {
+        titleEl.textContent = 'Дякуємо!';
+        bodyEl.innerHTML = '<div class="dm-done"><h3>Замовлення прийнято</h3><p>Номер: <b>' + esc(lastOrder.id) + '</b></p><p>Ми зв’яжемось із вами за номером ' + esc(lastOrder.customer.phone) + ', щоб підтвердити замовлення.</p></div>';
+        footEl.innerHTML = '<a class="dm-btn dm-btn--ghost" href="#/account" data-cart-close style="text-align:center;line-height:52px;text-decoration:none;margin-top:0">Мої замовлення</a><button type="button" class="dm-btn" data-cart-close style="margin-top:10px">Продовжити покупки</button>';
+        return;
+      }
+      if (view === 'checkout' && c.length) {
+        var u = currentUser();
+        titleEl.textContent = 'Оформлення';
+        bodyEl.innerHTML = '<form class="dm-form" id="dm-checkout" novalidate>' +
+          field('name', 'Ім’я та прізвище', 'text', u ? u.name : '', 'name') +
+          field('phone', 'Телефон', 'tel', u ? u.phone : '', 'tel') +
+          field('city', 'Місто', 'text', '', 'address-level2') +
+          field('delivery', 'Відділення Нової пошти / адреса', 'text', '', 'street-address') +
+          '<label class="dm-field">Коментар<textarea name="comment"></textarea></label>' +
+          '<p class="dm-msg" id="dm-checkout-msg" role="alert"></p></form>';
+        footEl.innerHTML = summary(t) + '<button type="submit" form="dm-checkout" class="dm-btn">Підтвердити замовлення</button><button type="button" class="dm-btn dm-btn--ghost" data-cart-view="cart">Назад до кошика</button>';
+        return;
+      }
+      view = 'cart';
+      titleEl.textContent = 'Кошик';
+      if (!c.length) {
+        bodyEl.innerHTML = '<div class="dm-empty">Кошик порожній.<br><a href="#shop" data-cart-close>Перейти до асортименту</a></div>';
+        footEl.innerHTML = '';
+        return;
+      }
+      bodyEl.innerHTML = c.map(function (i) {
+        var p = PRODUCTS[i.id];
+        return '<div class="dm-line"><a href="' + p.href + '" data-cart-close><img src="' + p.img + '" alt="" width="76" height="95"></a><div>' +
+          '<p class="dm-line__name">' + esc(p.name) + '</p><p class="dm-line__sub">' + esc(p.sub) + '</p>' +
+          '<div class="dm-line__row"><div class="dm-step"><button type="button" data-cart-step="-1" data-id="' + i.id + '" aria-label="Менше">&minus;</button><output>' + i.qty + '</output><button type="button" data-cart-step="1" data-id="' + i.id + '" aria-label="Більше">+</button></div>' +
+          '<span class="dm-line__price">' + money(p.price * i.qty) + '</span></div>' +
+          '<button type="button" class="dm-link" data-cart-remove data-id="' + i.id + '">Видалити</button></div></div>';
+      }).join('');
+      footEl.innerHTML = '<form class="dm-promo" id="dm-promo"><input type="text" name="code" placeholder="Промокод" aria-label="Промокод" autocomplete="off"><button type="submit">Застосувати</button></form>' +
+        '<p class="dm-msg" id="dm-promo-msg" role="status">' + esc(promoMsg) + '</p>' + summary(t) +
+        '<button type="button" class="dm-btn" data-cart-view="checkout">Оформити замовлення</button>';
+      promoMsg = '';
+    }
+    function summary(t) {
+      return '<div class="dm-sum"><span>Товари</span><span>' + money(t.sub) + '</span></div>' +
+        (t.on ? '<div class="dm-sum"><span>Знижка −10%</span><span>' + (t.disc > 0 ? '− ' + money(t.disc) : '−10%') + '</span></div>' : '') +
+        '<div class="dm-sum dm-sum--total"><span>Разом</span><span>' + money(t.total) + '</span></div>';
+    }
+    function field(name, label, type, val, ac) {
+      return '<label class="dm-field">' + label + '<input name="' + name + '" type="' + type + '" value="' + esc(val || '') + '" autocomplete="' + ac + '"></label>';
+    }
+
+    /* ---------- account (mock, localStorage) ---------- */
+    function users() { return LS.get('dm-users', {}); }
+    function currentUser() { var e = LS.get('dm-session', null); var u = e && users()[e]; return u ? { email: e, name: u.name, phone: u.phone } : null; }
+    function hashPw(pw) {
+      var enc = new TextEncoder().encode('dm:' + pw);
+      if (window.crypto && crypto.subtle) {
+        return crypto.subtle.digest('SHA-256', enc).then(function (b) { return Array.prototype.map.call(new Uint8Array(b), function (x) { return ('0' + x.toString(16)).slice(-2); }).join(''); });
+      }
+      return Promise.resolve(btoa(unescape(encodeURIComponent('dm:' + pw))));
+    }
+    var acctRoot = document.getElementById('dm-account-root');
+    var acctTab = 'login';
+    function renderAccount() {
+      if (!acctRoot) return;
+      var u = currentUser();
+      if (!u) {
+        acctRoot.innerHTML = '<div class="acct__box"><h1 class="acct__title">Особистий кабінет</h1>' +
+          '<div class="acct__tabs" role="tablist"><button type="button" class="acct__tab' + (acctTab === 'login' ? ' is-active' : '') + '" data-acct-tab="login">Вхід</button><button type="button" class="acct__tab' + (acctTab === 'register' ? ' is-active' : '') + '" data-acct-tab="register">Реєстрація</button></div>' +
+          (acctTab === 'login'
+            ? '<form class="dm-form" id="dm-login" novalidate>' + field('email', 'Email', 'email', '', 'email') + field('password', 'Пароль', 'password', '', 'current-password') + '<p class="dm-msg" role="alert"></p><button type="submit" class="dm-btn">Увійти</button></form>'
+            : '<form class="dm-form" id="dm-register" novalidate>' + field('name', 'Ім’я', 'text', '', 'name') + field('phone', 'Телефон', 'tel', '', 'tel') + field('email', 'Email', 'email', '', 'email') + field('password', 'Пароль (мін. 6 символів)', 'password', '', 'new-password') + '<p class="dm-msg" role="alert"></p><button type="submit" class="dm-btn">Створити кабінет</button></form>') +
+          '<p class="acct__note">Демо-версія: дані кабінету зберігаються лише у цьому браузері.</p></div>';
+        return;
+      }
+      var orders = LS.get('dm-orders', []).filter(function (o) { return o.email === u.email; }).reverse();
+      acctRoot.innerHTML = '<div class="acct__box" style="max-width:980px"><h1 class="acct__title">Привіт, ' + esc(u.name.split(' ')[0] || 'люба') + '</h1>' +
+        (LS.get('dm-discount', false) ? '<span class="acct__badge">Знижка −10% активна</span>' : '') +
+        '<div class="acct__wide"><div><h2>Мої дані</h2><form class="dm-form" id="dm-profile" novalidate>' +
+        '<label class="dm-field">Email<input value="' + esc(u.email) + '" disabled></label>' + field('name', 'Ім’я', 'text', u.name, 'name') + field('phone', 'Телефон', 'tel', u.phone, 'tel') +
+        '<p class="dm-msg" role="status"></p><button type="submit" class="dm-btn">Зберегти</button><button type="button" class="dm-btn dm-btn--ghost" id="dm-logout">Вийти</button></form></div>' +
+        '<div><h2>Мої замовлення</h2>' + (orders.length ? orders.map(function (o) {
+          return '<div class="acct__order"><div class="acct__order-head"><span>' + esc(o.id) + '</span><span>' + money(o.total) + '</span></div><p>' + esc(new Date(o.date).toLocaleDateString('uk-UA')) + ' · Нове</p><p>' +
+            o.items.map(function (i) { return esc(i.name) + ' × ' + i.qty; }).join(', ') + '</p></div>';
+        }).join('') : '<p class="dm-empty" style="text-align:left;padding:18px 0">Замовлень поки немає.</p>') + '</div></div></div>';
+    }
+
+    /* ---------- badge / refresh ---------- */
+    var badge = document.getElementById('dm-cart-badge');
+    function refresh() {
+      var n = getCart().reduce(function (s, i) { return s + i.qty; }, 0);
+      if (badge) { badge.textContent = n; badge.hidden = !n; }
+      if (!drawer.hidden) render();
+    }
+
+    /* ---------- popup ---------- */
+    var popup = document.getElementById('dm-popup');
+    function openPopup() { popup.hidden = false; document.body.classList.add('dm-lock'); var b = document.getElementById('dm-popup-claim'); if (b) b.focus(); }
+    function closePopup() { popup.hidden = true; document.body.classList.remove('dm-lock'); LS.set('dm-popup-seen', true); }
+    var shop = document.getElementById('shop');
+    if (shop && 'IntersectionObserver' in window && !LS.get('dm-popup-seen', false)) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && drawer.hidden && !LS.get('dm-popup-seen', false)) { io.disconnect(); LS.set('dm-popup-seen', true); setTimeout(openPopup, 600); }
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -25% 0px' });
+      io.observe(shop);
+    }
+
+    /* ---------- events ---------- */
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest ? e.target : null; if (!t) return;
+      var el;
+      if ((el = t.closest('[data-add]'))) {
+        var qty = 1, pg = el.closest('main.pp');
+        if (pg) { var o = pg.querySelector('[data-pp-qty]'); qty = o ? parseInt(o.textContent, 10) || 1 : 1; }
+        addToCart(el.getAttribute('data-add'), qty); openCart('cart'); return;
+      }
+      if (t.closest('#dm-cart-open')) { e.preventDefault(); openCart('cart'); return; }
+      if (t.closest('[data-cart-close]')) { closeCart(); return; }
+      if ((el = t.closest('[data-cart-view]'))) { view = el.getAttribute('data-cart-view'); render(); return; }
+      if ((el = t.closest('[data-cart-step]'))) {
+        var id = el.getAttribute('data-id'), cur = getCart().filter(function (i) { return i.id === id; })[0];
+        if (cur) setQty(id, Math.min(99, cur.qty + parseInt(el.getAttribute('data-cart-step'), 10))); return;
+      }
+      if ((el = t.closest('[data-cart-remove]'))) { setQty(el.getAttribute('data-id'), 0); return; }
+      if (t.closest('[data-popup-close]')) { closePopup(); return; }
+      if (t.closest('#dm-popup-claim')) { LS.set('dm-discount', true); closePopup(); refresh(); renderAccount(); openCart('cart'); return; }
+      if ((el = t.closest('[data-acct-tab]'))) { acctTab = el.getAttribute('data-acct-tab'); renderAccount(); return; }
+      if (t.closest('#dm-logout')) { LS.set('dm-session', null); renderAccount(); return; }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (!popup.hidden) closePopup(); else if (!drawer.hidden) closeCart();
+    });
+
+    function msgOf(form) { return form.querySelector('.dm-msg'); }
+    document.addEventListener('submit', function (e) {
+      var f = e.target;
+      if (f.id === 'dm-promo') {
+        e.preventDefault();
+        var code = f.code.value.trim().toUpperCase();
+        if (code === DISCOUNT_CODE) { LS.set('dm-discount', true); promoMsg = 'Знижку −10% застосовано.'; }
+        else promoMsg = code ? 'Такого промокоду не існує.' : 'Введіть промокод.';
+        render();
+      } else if (f.id === 'dm-checkout') {
+        e.preventDefault();
+        var d = { name: f.elements.name.value.trim(), phone: f.phone.value.trim(), city: f.city.value.trim(), delivery: f.delivery.value.trim(), comment: f.comment.value.trim() };
+        var m = document.getElementById('dm-checkout-msg');
+        if (!d.name || !d.city || !d.delivery) { m.textContent = 'Заповніть ім’я, місто та відділення/адресу.'; return; }
+        if (d.phone.replace(/\D/g, '').length < 10) { m.textContent = 'Вкажіть коректний номер телефону.'; return; }
+        var c = getCart(), t = totals(c), u = currentUser();
+        var order = {
+          id: 'DM-' + Date.now().toString(36).toUpperCase(), date: new Date().toISOString(), email: u ? u.email : null,
+          items: c.map(function (i) { return { id: i.id, name: PRODUCTS[i.id].name, qty: i.qty, price: PRODUCTS[i.id].price }; }),
+          subtotal: t.sub, discount: t.disc, total: t.total, customer: d
+        };
+        var all = LS.get('dm-orders', []); all.push(order); LS.set('dm-orders', all);
+        LS.set('dm-cart', []); LS.set('dm-discount', false);
+        lastOrder = order; view = 'done';
+        document.dispatchEvent(new CustomEvent('dm:order', { detail: order }));
+        refresh(); render(); renderAccount();
+      } else if (f.id === 'dm-login') {
+        e.preventDefault();
+        var em = f.email.value.trim().toLowerCase(), us = users();
+        hashPw(f.password.value).then(function (h) {
+          if (us[em] && us[em].hash === h) { LS.set('dm-session', em); renderAccount(); }
+          else msgOf(f).textContent = 'Невірний email або пароль.';
+        });
+      } else if (f.id === 'dm-register') {
+        e.preventDefault();
+        var email = f.email.value.trim().toLowerCase(), name = f.elements.name.value.trim(), phone = f.phone.value.trim(), pw = f.password.value, us2 = users();
+        if (!name || !/^\S+@\S+\.\S+$/.test(email)) { msgOf(f).textContent = 'Вкажіть ім’я та коректний email.'; return; }
+        if (pw.length < 6) { msgOf(f).textContent = 'Пароль має містити щонайменше 6 символів.'; return; }
+        if (us2[email]) { msgOf(f).textContent = 'Цей email уже зареєстровано.'; return; }
+        hashPw(pw).then(function (h) { us2[email] = { name: name, phone: phone, hash: h }; LS.set('dm-users', us2); LS.set('dm-session', email); renderAccount(); });
+      } else if (f.id === 'dm-profile') {
+        e.preventDefault();
+        var u3 = currentUser(), all2 = users();
+        if (u3 && all2[u3.email]) { all2[u3.email].name = f.elements.name.value.trim() || u3.name; all2[u3.email].phone = f.phone.value.trim(); LS.set('dm-users', all2); renderAccount(); var mm = acctRoot.querySelector('#dm-profile .dm-msg'); if (mm) mm.textContent = 'Збережено.'; }
+      }
+    });
+
+    window.addEventListener('hashchange', function () { if (location.hash === '#/account') renderAccount(); });
+    renderAccount();
+    refresh();
+  } catch (e) { console.error('D\'Amore shop script error:', e); }
+})();
+</script>
 </body>
 </html>
