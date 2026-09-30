@@ -1592,10 +1592,8 @@
       var next = hit ? hit.key : 'home';
       var changed = next !== current;
       home.hidden = !!hit;
-      pages.forEach(function (p) {
-        p.el.hidden = p !== hit;
-        document.body.classList.toggle(p.cls, p === hit);
-      });
+      pages.forEach(function (p) { p.el.hidden = p !== hit; });
+      pages.forEach(function (p) { document.body.classList.toggle(p.cls, !!hit && hit.cls === p.cls); });
       var techBox = document.getElementById('pp-tech-shared');
       if (techBox) techBox.hidden = !(hit && hit.cls === 'is-product-page');
       document.title = hit ? hit.title + ' — ' + baseTitle : baseTitle;
