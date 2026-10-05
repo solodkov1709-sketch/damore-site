@@ -116,11 +116,10 @@
   .catalog__tile img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1); transition: transform .5s ease, filter .5s ease; }
   .catalog__tile:hover img { transform: scale(1.05); filter: grayscale(0); }
   .catalog__tile--accent img { filter: grayscale(0); }
-  .catalog__tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 46%); pointer-events: none; }
-  .catalog__label { position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 2; color: var(--dm-white); font-family: 'Jost', sans-serif; font-size: clamp(14px,1.6vw,18px); font-weight: 600; text-transform: uppercase; letter-spacing: .02em; line-height: 1.25; }
+  .catalog__label { position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 2; color: var(--dm-white); text-shadow: 0 1px 10px rgba(0,0,0,.35); font-family: 'Jost', sans-serif; font-size: clamp(14px,1.6vw,18px); font-weight: 600; text-transform: uppercase; letter-spacing: .02em; line-height: 1.25; }
   .catalog__tile--solid { background: var(--dm-accent); }
   .catalog__tile--solid .catalog__label { position: static; padding: 20px; }
-  .catalog__tile--solid::after { display: none; }
+  .catalog__tile--solid .catalog__label { text-shadow: none; }
   .catalog__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(10,10,10,.15); background: var(--dm-white); color: var(--dm-black); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 3; transition: background .2s ease, color .2s ease; }
   .catalog__nav:hover { background: var(--dm-black); color: var(--dm-white); }
   .catalog__nav--prev { left: clamp(-4px,0.5vw,12px); }
@@ -1514,7 +1513,7 @@
         <span class="site-footer__logo">D'AM<svg class="site-header__logo-heart" viewBox="0 0 32 28" fill="currentColor" aria-hidden="true"><path d="M16 26C7 19 2 14 2 8.5 2 4 5.5 1 9.5 1c2.7 0 5 1.4 6.5 3.6C17.5 2.4 19.8 1 22.5 1 26.5 1 30 4 30 8.5 30 14 25 19 16 26z"/></svg>RE</span>
         <p class="site-footer__tagline">Made for the love you give yourself.</p>
         <div class="site-footer__social">
-          <a href="#" aria-label="Instagram">
+          <a href="https://www.instagram.com/the_trend.studio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
           </a>
           <a href="#" aria-label="Telegram">
