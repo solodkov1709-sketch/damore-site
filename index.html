@@ -113,9 +113,8 @@
   .catalog__track { display: flex; gap: 4px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 clamp(16px,4vw,96px) 6px; scrollbar-width: none; }
   .catalog__track::-webkit-scrollbar { display: none; }
   .catalog__tile { position: relative; flex: 0 0 clamp(200px,23vw,300px); aspect-ratio: 3/4; overflow: hidden; scroll-snap-align: start; background: var(--dm-black); text-decoration: none; display: block; }
-  .catalog__tile img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1); transition: transform .5s ease, filter .5s ease; }
-  .catalog__tile:hover img { transform: scale(1.05); filter: grayscale(0); }
-  .catalog__tile--accent img { filter: grayscale(0); }
+  .catalog__tile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+  .catalog__tile:hover img { transform: scale(1.05); }
   .catalog__label { position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 2; color: var(--dm-white); text-shadow: 0 1px 10px rgba(0,0,0,.35); font-family: 'Jost', sans-serif; font-size: clamp(14px,1.6vw,18px); font-weight: 600; text-transform: uppercase; letter-spacing: .02em; line-height: 1.25; }
   .catalog__tile--solid { background: var(--dm-accent); }
   .catalog__tile--solid .catalog__label { position: static; padding: 20px; }
