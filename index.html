@@ -159,7 +159,17 @@
   .step__num { display: block; margin: 20px 0 6px; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 30px; line-height: 1; color: var(--wine); }
   .step__name { display: block; font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
   .step__desc { display: block; margin-top: 8px; font-size: 13.5px; line-height: 1.6; color: var(--ink-3); }
-  .ritual__motion { margin-top: clamp(80px,12vh,140px); }
+  .ritual__motion { position: relative; margin-top: clamp(80px,12vh,140px); }
+  .ribbon__track { cursor: grab; }
+  .ribbon__track.is-moving { scroll-snap-type: none; }
+  .ribbon__track.is-drag { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+  .ribbon__arrow { position: absolute; z-index: 3; top: calc(50% - 40px); width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border: 0; background: var(--espresso); color: var(--ivory); cursor: pointer; transition: background-color .3s var(--ease), opacity .3s; }
+  .ribbon__arrow:hover { background: var(--wine); }
+  .ribbon__arrow[disabled] { opacity: 0; pointer-events: none; }
+  .ribbon__arrow--prev { left: var(--dm-pad-x); }
+  .ribbon__arrow--next { right: var(--dm-pad-x); }
+  .ribbon__arrow svg { width: 20px; height: 20px; }
+  @media (max-width: 760px) { .ribbon__arrow { display: none; } }
   .ribbon__track { display: flex; gap: clamp(12px,1.6vw,24px); overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 var(--dm-pad-x); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .ribbon__track::-webkit-scrollbar { display: none; }
   .ribbon__item { position: relative; flex: 0 0 clamp(200px,23vw,330px); aspect-ratio: 3/4; overflow: hidden; background: var(--taupe); scroll-snap-align: start; }
@@ -174,7 +184,7 @@
   .transform__result { margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--line); max-width: 420px; }
   .transform__result p { margin: 0; font-size: 15px; line-height: 1.8; color: var(--ink-2); }
   .transform__visual { position: relative; }
-  .transform__visual::before { content: ""; position: absolute; z-index: 0; left: 16%; right: calc(-1 * var(--dm-pad-x)); top: 9%; bottom: -9%; background: var(--taupe); }
+  .transform__visual::before { content: ""; position: absolute; z-index: 0; left: 16%; right: calc(-1 * var(--dm-pad-x)); top: 9%; bottom: -5%; background: var(--taupe); }
   .compare__frame { position: relative; z-index: 1; width: 100%; max-width: 540px; margin-left: auto; aspect-ratio: 3/4; overflow: hidden; touch-action: pan-y; }
   .compare__frame:focus-within .compare__handle { box-shadow: 0 0 0 3px var(--wine); }
   .compare__panel { position: absolute; inset: 0; display: flex; align-items: flex-end; background: var(--taupe); }
@@ -750,19 +760,6 @@
     </div>
   </section>
 
-  <section class="sec sec--dark idea" id="brand">
-    <div class="wrap idea__grid">
-      <span class="eyebrow" data-reveal>Про бренд</span>
-      <div>
-        <h2 class="h2 idea__t" data-reveal>Made for the love <em>you give yourself.</em></h2>
-        <div class="idea__text" data-reveal>
-          <p>Ми віримо, що догляд за волоссям — це не рутина, а маленький ритуал любові до себе. Кожен флакон D'Amore створений так, щоб буденне миття голови перетворювалось на кілька хвилин ніжності й турботи.</p>
-          <p>Ми обираємо чутливі текстури, теплі аромати й формули, які хочеться повторювати знову — тому що любов до себе не повинна бути складною.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="sec sec--light ritual" id="collection">
     <div class="wrap">
       <div class="ritual__head" data-reveal>
@@ -772,7 +769,7 @@
         </div>
         <div class="ritual__aside">
           <p class="lead">Повний набір для реконструкції волосся вдома: шампунь, маска, дифризер, молочко і термозахист.</p>
-          <a href="#/product/moment-for-me" class="link">Детальніше</a>
+          <a href="#/product/moment-for-me" class="btn">Детальніше</a>
         </div>
       </div>
       <ol class="steps">
@@ -819,6 +816,8 @@
       </ol>
     </div>
     <div class="ritual__motion">
+      <button type="button" class="ribbon__arrow ribbon__arrow--prev" data-ribbon-arrow="-1" aria-label="Попереднє відео"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4 6.5 10l6 6"/></svg></button>
+      <button type="button" class="ribbon__arrow ribbon__arrow--next" data-ribbon-arrow="1" aria-label="Наступне відео"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg></button>
       <div class="ribbon__track" id="dm-track" data-reveal>
       <div class="ribbon__item">
         <video src="assets/reel-5.mp4" poster="assets/reel-5.jpg" muted loop playsinline preload="none" data-reel aria-label="Відео 1"></video>
@@ -881,7 +880,6 @@
           </div>
           <input type="range" min="0" max="100" value="50" class="compare__range" id="dm-compare-range" aria-label="Перетягніть, щоб порівняти до і після">
         </div>
-        <div class="transform__caption"><span>До</span><span>Moment for me</span><span>Після</span></div>
       </div>
     </div>
   </section>
@@ -1441,6 +1439,56 @@
     </div>
   </footer>
 
+<script>
+(function () {
+  var t = document.getElementById('dm-track');
+  if (!t) return;
+  var arrows = document.querySelectorAll('[data-ribbon-arrow]');
+  function step() { var it = t.firstElementChild; return it ? it.offsetWidth + 16 : 300; }
+  function sync() {
+    var max = t.scrollWidth - t.clientWidth - 8;
+    arrows.forEach(function (a) {
+      var dir = +a.getAttribute('data-ribbon-arrow');
+      a.disabled = dir < 0 ? t.scrollLeft <= (t.firstElementChild ? t.firstElementChild.offsetLeft : 0) + 8 :t.scrollLeft >= max;
+    });
+  }
+  arrows.forEach(function (a) {
+    a.addEventListener('click', function () {
+      var dir = +a.getAttribute('data-ribbon-arrow'), items = Array.prototype.slice.call(t.children), x = t.scrollLeft, to;
+      if (dir > 0) { for (var i = 0; i < items.length; i++) { if (items[i].offsetLeft > x + 8) { to = items[i].offsetLeft; break; } } }
+      else { for (var j = items.length - 1; j >= 0; j--) { if (items[j].offsetLeft < x - 8) { to = items[j].offsetLeft; break; } } }
+      if (to === undefined) to = dir > 0 ? t.scrollWidth : 0;
+      t.classList.add('is-moving');
+      t.scrollTo({ left: to, behavior: 'smooth' });
+      clearTimeout(t._mv); t._mv = setTimeout(function () { t.classList.remove('is-moving'); }, 700);
+    });
+  });
+  t.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+  window.addEventListener('load', sync);
+  setTimeout(sync, 400); setTimeout(sync, 1500);
+  sync();
+  // mouse drag (touch scrolls natively)
+  var down = false, sx = 0, sl = 0, moved = false;
+  t.addEventListener('mousedown', function (e) {
+    if (e.target.closest('button')) return;
+    down = true; moved = false; sx = e.pageX; sl = t.scrollLeft;
+  });
+  window.addEventListener('mousemove', function (e) {
+    if (!down) return;
+    var dx = e.pageX - sx;
+    if (Math.abs(dx) > 5) { moved = true; t.classList.add('is-drag'); }
+    if (moved) t.scrollLeft = sl - dx;
+  });
+  window.addEventListener('mouseup', function () {
+    if (!down) return;
+    down = false;
+    if (moved) { t.classList.remove('is-drag'); }
+  });
+  t.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+  t.addEventListener('dragstart', function (e) { e.preventDefault(); });
+})();
+</script>
 <script>
 (function () {
   try {
