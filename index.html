@@ -223,25 +223,29 @@
   /* 07 Shop: purchase, plus the quiet catalog index */
   .shop__head { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; }
   .shop__hint { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); }
-  .shop__stage { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); margin-top: clamp(40px,6vh,72px); align-items: stretch; }
-  .shop__media { position: relative; display: block; min-height: clamp(520px,56vw,840px); overflow: hidden; background: var(--taupe); }
-  .shop__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 78%; transition: transform 1.2s var(--ease); }
+  .shop__stage { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,6fr); gap: clamp(32px,6vw,112px); margin-top: clamp(40px,6vh,72px); align-items: center; }
+  .shop__media { position: relative; display: block; aspect-ratio: 3/4; overflow: hidden; background: var(--taupe); }
+  .shop__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transition: transform 1.2s var(--ease); }
   .shop__media:hover img { transform: scale(1.025); }
-  .shop__panel { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 14px; padding: clamp(32px,5vw,88px) var(--dm-pad-x) clamp(32px,5vw,88px) clamp(32px,5vw,88px); }
+  .shop__panel { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 14px; padding: 0; }
   .shop__t { margin: 8px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 500; font-size: clamp(34px,3.6vw,52px); line-height: 1.05; }
   .shop__sub { margin: 0; font-size: 16px; color: var(--ink-2); }
   .shop__panel .dm-rating { margin: 0; font-size: 13px; }
   .shop__p { margin: 6px 0 0; max-width: 460px; font-size: 16px; line-height: 1.8; color: var(--ink-2); }
   .shop__price { margin: 10px 0 0; font-size: 28px; font-weight: 500; letter-spacing: .02em; }
   .shop__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 30px; margin-top: 8px; }
-  .catalog { align-self: stretch; margin-top: clamp(36px,6vh,64px); border-top: 1px solid var(--line); }
-  .catalog__list { list-style: none; margin: 0; padding: 0; }
-  .catalog__row { display: grid; grid-template-columns: 44px minmax(0,1fr) auto; align-items: baseline; gap: 12px; padding: 17px 0; border-bottom: 1px solid var(--line); color: inherit; transition: padding .4s var(--ease), color .3s var(--ease); }
-  .catalog__row:hover { padding-left: 10px; color: var(--wine); }
-  .catalog__n { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 22px; color: var(--ink-3); }
-  .catalog__name { font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
-  .catalog__st { font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-3); }
-  .catalog .eyebrow { margin: 18px 0 8px; }
+  .catalog__wrap { position: relative; margin-top: clamp(32px,5vh,56px); }
+  .catalog__track { display: flex; gap: clamp(8px,1vw,16px); overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 var(--dm-pad-x); scrollbar-width: none; cursor: grab; }
+  .catalog__track::-webkit-scrollbar { display: none; }
+  .catalog__track.is-moving { scroll-snap-type: none; }
+  .catalog__track.is-drag { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+  .catalog__tile { position: relative; flex: 0 0 clamp(200px,23vw,320px); aspect-ratio: 3/4; overflow: hidden; scroll-snap-align: start; background: var(--taupe); display: block; color: var(--ivory); }
+  .catalog__tile img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--dm-photo-filter); transition: transform .8s var(--ease); -webkit-user-drag: none; }
+  .catalog__tile:hover img { transform: scale(1.04); }
+  .catalog__tile--solid { background: var(--wine); }
+  .catalog__label { position: absolute; left: 20px; right: 20px; bottom: 20px; z-index: 2; font-size: clamp(13px,1.3vw,15px); font-weight: 600; letter-spacing: .16em; text-transform: uppercase; line-height: 1.4; text-shadow: 0 1px 12px rgba(33,28,25,.45); }
+  .catalog__tag { position: absolute; left: 14px; top: 14px; z-index: 2; padding: 6px 12px; background: var(--espresso); color: var(--ivory); font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+  .catalog .ribbon__arrow { top: calc(50% - 26px); }
   .perks { margin-top: var(--dm-sec-y); padding: clamp(36px,5vh,56px) 0; background: var(--taupe); }
   .perks__row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 28px clamp(16px,3vw,32px); }
   .perks__item { flex: 1 1 150px; display: flex; flex-direction: column; align-items: center; text-align: center; }
@@ -282,8 +286,8 @@
     .compare__frame, .transform__caption { margin-left: 0; max-width: 520px; }
     .girl__text { padding: 0 var(--dm-pad-x); }
     .girl__media { aspect-ratio: 4/5; max-height: 640px; }
-    .shop__media { min-height: 0; aspect-ratio: 4/5; max-height: 640px; }
-    .shop__panel { padding: 36px var(--dm-pad-x) 0; }
+    .shop__media { max-width: 560px; }
+    .shop__panel { padding: 0; }
     .philosophy__lines { grid-template-columns: repeat(2, minmax(0,1fr)); }
     .blog__grid { grid-template-columns: minmax(0,1fr); gap: 0; }
     .blog__card { padding-bottom: 32px; }
@@ -849,6 +853,46 @@
     </div>
   </section>
 
+  <section class="sec sec--light catalog" id="catalog" style="padding-top:0">
+    <div class="wrap">
+      <div class="shop__head" data-reveal>
+        <div>
+          <span class="eyebrow">Каталог</span>
+          <h2 class="h2">Обирайте <em>за категорією</em></h2>
+        </div>
+        <span class="shop__hint">Гортайте →</span>
+      </div>
+    </div>
+    <div class="catalog__wrap" data-reveal>
+      <button type="button" class="ribbon__arrow ribbon__arrow--prev" data-ribbon-arrow="-1" aria-label="Попередні категорії"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4 6.5 10l6 6"/></svg></button>
+      <button type="button" class="ribbon__arrow ribbon__arrow--next" data-ribbon-arrow="1" aria-label="Наступні категорії"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg></button>
+      <div class="catalog__track" id="dm-catalog-track">
+        <a href="#/product/moment-for-me" class="catalog__tile">
+          <img src="assets/asset-bf0c5b99.jpg" alt="Холодна реконструкція" loading="lazy" decoding="async">
+          <span class="catalog__label">Холодна<br>реконструкція</span>
+        </a>
+        <a href="#/catalog/home-care" class="catalog__tile">
+          <img src="assets/asset-7e6663a4.jpg" alt="Домашній догляд" loading="lazy" decoding="async">
+          <span class="catalog__tag">Скоро</span>
+          <span class="catalog__label">Домашній<br>догляд</span>
+        </a>
+        <a href="#/catalog/body-care" class="catalog__tile">
+          <img src="assets/asset-362bdaa7.jpg" alt="Догляд за тілом" loading="lazy" decoding="async">
+          <span class="catalog__tag">Скоро</span>
+          <span class="catalog__label">Догляд<br>за тілом</span>
+        </a>
+        <a href="#/catalog/accessories" class="catalog__tile catalog__tile--solid">
+          <span class="catalog__tag">Скоро</span>
+          <span class="catalog__label">Аксесуари</span>
+        </a>
+        <a href="#/catalog/gifts" class="catalog__tile">
+          <img src="assets/asset-2296e8e8.jpg" alt="Сертифікати та подарунки" loading="lazy" decoding="async">
+          <span class="catalog__tag">Наповнюється</span>
+          <span class="catalog__label">Сертифікати<br>та подарунки</span>
+        </a>
+      </div>
+    </div>
+  </section>
   <section class="sec sec--light transform" id="compare" style="padding-top:0">
     <div class="wrap transform__grid">
       <div class="transform__text" data-reveal>
@@ -930,6 +974,7 @@
         <span class="shop__hint">Лінійка поповнюється</span>
       </div>
     </div>
+    <div class="wrap">
     <div class="shop__stage">
       <a href="#/product/moment-for-me" class="shop__media" data-reveal>
         <img src="assets/set-moment-for-me.jpg" alt="D'Amore Moment for me — набір для холодної реконструкції: шампунь, маска, дифризер, молочко, термозахист" width="1792" height="2400" loading="lazy" decoding="async">
@@ -945,17 +990,9 @@
           <button type="button" class="btn" data-add="set">В кошик <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <a href="#/product/moment-for-me" class="link">Детальніше</a>
         </div>
-        <div class="catalog" id="catalog">
-          <span class="eyebrow">Каталог</span>
-          <ol class="catalog__list">
-          <li><a class="catalog__row" href="#/product/moment-for-me"><span class="catalog__n">01</span><span class="catalog__name">Холодна реконструкція</span><span class="catalog__st">Moment for me</span></a></li>
-          <li><a class="catalog__row" href="#/catalog/home-care"><span class="catalog__n">02</span><span class="catalog__name">Домашній догляд</span><span class="catalog__st">Скоро</span></a></li>
-          <li><a class="catalog__row" href="#/catalog/body-care"><span class="catalog__n">03</span><span class="catalog__name">Догляд за тілом</span><span class="catalog__st">Скоро</span></a></li>
-          <li><a class="catalog__row" href="#/catalog/accessories"><span class="catalog__n">04</span><span class="catalog__name">Аксесуари</span><span class="catalog__st">Скоро</span></a></li>
-          <li><a class="catalog__row" href="#/catalog/gifts"><span class="catalog__n">05</span><span class="catalog__name">Сертифікати та подарунки</span><span class="catalog__st">Наповнюється</span></a></li>
-          </ol>
-        </div>
+
       </div>
+    </div>
     </div>
     <div class="perks"><div class="wrap perks__row">
       <div class="perks__item">
@@ -1440,11 +1477,8 @@
   </footer>
 
 <script>
-(function () {
-  var t = document.getElementById('dm-track');
+function dmScroller(t, arrows) {
   if (!t) return;
-  var arrows = document.querySelectorAll('[data-ribbon-arrow]');
-  function step() { var it = t.firstElementChild; return it ? it.offsetWidth + 16 : 300; }
   function sync() {
     var max = t.scrollWidth - t.clientWidth - 8;
     arrows.forEach(function (a) {
@@ -1487,7 +1521,9 @@
   });
   t.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
   t.addEventListener('dragstart', function (e) { e.preventDefault(); });
-})();
+}
+dmScroller(document.getElementById('dm-track'), document.querySelectorAll('#collection [data-ribbon-arrow]'));
+dmScroller(document.getElementById('dm-catalog-track'), document.querySelectorAll('#catalog [data-ribbon-arrow]'));
 </script>
 <script>
 (function () {
