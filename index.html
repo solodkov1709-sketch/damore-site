@@ -174,8 +174,8 @@
   .ribbon__track::-webkit-scrollbar { display: none; }
   .ribbon__item { position: relative; flex: 0 0 clamp(200px,23vw,330px); aspect-ratio: 3/4; overflow: hidden; background: var(--taupe); scroll-snap-align: start; }
   .ribbon__item video { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .dots { display: flex; gap: 6px; padding: 24px var(--dm-pad-x) 0; }
-  .dot { width: 22px; height: 2px; border: 0; padding: 12px 0; background: var(--line) content-box; cursor: pointer; transition: width .35s var(--ease), background-color .35s var(--ease); }
+  .dots { display: flex; gap: 6px; padding: 8px var(--dm-pad-x) 0; }
+  .dot { width: 22px; height: 2px; border: 0; padding: 20px 0; background: var(--line) content-box; cursor: pointer; transition: width .35s var(--ease), background-color .35s var(--ease); }
   .dot.is-active { width: 44px; background: var(--wine) content-box; }
 
   /* 04 Transformation: before, the ritual, after */
@@ -514,7 +514,15 @@
     .pp-sticker { width: 84px; height: 84px; margin: 0 0 0 4px; box-shadow: none; }
     .pp-sticker svg { width: 42px; height: 42px; }
     .pp-gallery { flex-direction: column-reverse; gap: 22px; }
-    .pp-thumbs { flex-direction: row; flex: none; }
+    .pp-thumbs { flex-direction: row; flex: none; width: 100%; max-width: 100%; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+    .pp-thumbs::-webkit-scrollbar { display: none; }
+    .pp-thumb { flex: 0 0 72px; }
+    .link { padding: 12px 0 8px; }
+    .site-footer__col { gap: 0; }
+    .site-footer__col a { padding: 11px 0; }
+    .site-footer__social a { width: 44px; height: 44px; }
+    .finale__t em { white-space: nowrap; }
+    .pp-crumbs a, .cs__crumbs a, .cs__link { display: inline-block; padding: 10px 0; }
     .pp-main { flex: none; width: calc(100% - 14px); }
   }
 
